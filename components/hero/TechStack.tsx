@@ -1,28 +1,27 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
-const techStacks = "https://skillicons.dev/icons?i=react,nextjs,java"
+const techStacks = "https://skillicons.dev/icons?i=react,nextjs,java";
 
 export const TechStack = () => {
   return (
-    <div className="h-full flex items-center justify-center p-4">
+    <div className="h-full flex items-center justify-center">
       <Link
         href="/stack"
         className="block hover:shadow-md transition-all cursor-pointer"
       >
         <div className="text-center">
-          <Image 
-            src={techStacks} 
-            alt="React, Next.js, Java技術スタック" 
-            width={200} 
+          <Image
+            src={techStacks}
+            alt="React, Next.js, Java技術スタック"
+            width={200}
             height={50}
             className="mx-auto"
           />
-          <p className="text-sm text-gray-600 mt-2">技術スタックを見る</p>
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
