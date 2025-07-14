@@ -15,21 +15,22 @@ export const SwiperGallery = ({ images }: SwiperGalleryProps) => {
   console.log('SwiperGallery images:', images) // デバッグ用
 
   return (
-    <div className="w-full h-full">
-      <Swiper
-        modules={[Autoplay]}
-        autoplay={{ delay: 3000 }}
-        loop
-        className="w-full h-full"
-      >
+    <div className="w-full h-full flex items-center justify-center p-4">
+      <div className="w-full max-w-xs aspect-square">
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 3000 }}
+          loop
+          className="w-full h-full rounded-lg overflow-hidden"
+        >
         {images.map((image) => (
           <SwiperSlide key={image.id}>
-            <div className="relative w-full h-full min-h-[200px]">
+            <div className="relative w-full aspect-square">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover"
+                className="object-cover rounded-lg"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority={image.id === 1}
                 onError={(e) => {
@@ -42,7 +43,8 @@ export const SwiperGallery = ({ images }: SwiperGalleryProps) => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+        </Swiper>
+      </div>
     </div>
   )
 }
