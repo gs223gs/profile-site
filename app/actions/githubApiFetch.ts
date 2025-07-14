@@ -1,3 +1,33 @@
+/**
+ * GitHub APIを使用してユーザーのコントリビューション情報を取得するServer Action
+ * 
+ * 使用方法:
+ * 1. 環境変数の設定
+ *    - .env.localファイルに GITHUB_TOKEN を設定する
+ *    - 例: GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ *    - トークンの作成: https://github.com/settings/tokens
+ *    - 必要なスコープ: read:user, repo (プライベートリポジトリの貢献も含める場合)
+ * 
+ * 2. クライアントコンポーネントからの呼び出し
+ *    ```tsx
+ *    import { getMonthlyContributions } from '@/app/actions/githubApiFetch';
+ *    
+ *    // デフォルトユーザー（developerhost）の情報を取得
+ *    const contributions = await getMonthlyContributions();
+ *    
+ *    // 特定のユーザーの情報を取得
+ *    const contributions = await getMonthlyContributions('octocat');
+ *    ```
+ * 
+ * 3. 戻り値の形式
+ *    ```ts
+ *    {
+ *      "2024-01": 45,  // 2024年1月: 45コントリビューション
+ *      "2024-02": 30,  // 2024年2月: 30コントリビューション
+ *      ...
+ *    }
+ *    ```
+ */
 'use server';
 
 import { request, gql } from 'graphql-request';
@@ -51,9 +81,30 @@ interface GitHubResponse {
 }
 
 // デフォルトユーザー名
-const DEFAULT_USER = "developerhost";
+const DEFAULT_USER = "gs223gs";
 
-/** 直近12か月の日次 → 月次に集計して返す Server Action */
+/**
+ * 直近12か月の日次コントリビューションを月次に集計して返す Server Action
+ * 
+ * @param login - GitHubユーザー名（省略時は"developerhost"）
+ * @returns 月別のコントリビューション数（例: {"2024-01": 45, "2024-02": 30}）
+ * @throws エラー時は空のオブジェクトを返す
+ * 
+ * @example
+ * // React Server Componentでの使用例
+ * export default async function StatsPage() {
+ *   const contributions = await getMonthlyContributions();
+ *   return <ContributionChart data={contributions} />;
+ * }
+ * 
+ * @example
+ * // Client Componentでの使用例（useEffectやイベントハンドラ内で）
+ * useEffect(() => {
+ *   getMonthlyContributions('octocat').then(data => {
+ *     setContributions(data);
+ *   });
+ * }, []);
+ */
 export async function getMonthlyContributions(
   login: string = DEFAULT_USER
 ): Promise<Record<string, number>> {
