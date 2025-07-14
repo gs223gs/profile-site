@@ -13,6 +13,8 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     files: ["**/*.ts", "**/*.tsx"],
+    // shadcn/uiコンポーネントを除外
+    ignores: ["components/ui/**/*"],
     rules: {
       // useEffect の使用を禁止
       "@typescript-eslint/no-restricted-imports": [
