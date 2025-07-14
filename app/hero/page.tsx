@@ -18,14 +18,14 @@ export default function HeroPage() {
         </div>
 
         {/* 🔸 キャッチコピー - 右上 4x2 */}
-        <div className="col-span-4 row-span-1">
+        <div className="col-span-5 row-span-1 ">
           <BorderedContainer>
             <CatchPhrase />
           </BorderedContainer>
         </div>
 
         {/* 🔹 自己紹介 - 右中 4x3 */}
-        <div className="col-span-4 row-span-4">
+        <div className="col-span-5 row-span-4">
           <BorderedContainer>
             <SelfIntroduction />
           </BorderedContainer>
