@@ -32,19 +32,9 @@
 
 import { request, gql } from 'graphql-request';
 
-const ENDPOINT = 'https://api.github.com/graphql';
+export const ENDPOINT = 'https://api.github.com/graphql';
 
-// 環境変数の確認
-if (!process.env.GITHUB_TOKEN) {
-  throw new Error('GITHUB_TOKEN environment variable is not set');
-}
-
-const HEADERS = { 
-  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-  'User-Agent': 'NextJS-App'
-} as const;
-
-const QUERY = gql`
+export const QUERY = gql`
   query ($login: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $login) {
       contributionsCollection(from: $from, to: $to) {
@@ -61,16 +51,16 @@ const QUERY = gql`
   }
 `;
 
-interface ContributionDay {
+export interface ContributionDay {
   date: string;
   contributionCount: number;
 }
 
-interface Week {
+export interface Week {
   contributionDays: ContributionDay[];
 }
 
-interface GitHubResponse {
+export interface GitHubResponse {
   user: {
     contributionsCollection: {
       contributionCalendar: {
@@ -81,12 +71,61 @@ interface GitHubResponse {
 }
 
 // デフォルトユーザー名
-const DEFAULT_USER = "gs223gs";
+export const DEFAULT_USER = "gs223gs";
+
+/**
+ * GitHubトークンを取得
+ */
+export function getGitHubToken(): string {
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    throw new Error('GITHUB_TOKEN environment variable is not set');
+  }
+  return token;
+}
+
+/**
+ * APIリクエスト用のヘッダーを作成
+ */
+export function createHeaders(token: string) {
+  return {
+    Authorization: `Bearer ${token}`,
+    'User-Agent': 'NextJS-App'
+  } as const;
+}
+
+/**
+ * 日次コントリビューションデータを月次に集計
+ */
+export function aggregateContributionsByMonth(days: ContributionDay[]): Record<string, number> {
+  return days.reduce<Record<string, number>>((acc, d) => {
+    const ym = d.date.slice(0, 7);
+    acc[ym] = (acc[ym] ?? 0) + d.contributionCount;
+    return acc;
+  }, {});
+}
+
+/**
+ * GitHub APIへのリクエストを実行
+ */
+export async function fetchGitHubContributions(
+  login: string,
+  from: string,
+  to: string,
+  headers: Record<string, string>
+): Promise<GitHubResponse> {
+  return request<GitHubResponse>(
+    ENDPOINT,
+    QUERY,
+    { login, from, to },
+    headers
+  );
+}
 
 /**
  * 直近12か月の日次コントリビューションを月次に集計して返す Server Action
  * 
- * @param login - GitHubユーザー名（省略時は"developerhost"）
+ * @param login - GitHubユーザー名（省略時は"gs223gs"）
  * @returns 月別のコントリビューション数（例: {"2024-01": 45, "2024-02": 30}）
  * @throws エラー時は空のオブジェクトを返す
  * 
@@ -113,19 +152,22 @@ export async function getMonthlyContributions(
     const from = new Date(now);
     from.setMonth(now.getMonth() - 11, 1);
 
+    const token = getGitHubToken();
+    const headers = createHeaders(token);
+
     console.log('GitHub API Request:', {
       login,
       from: from.toISOString(),
       to: now.toISOString(),
-      hasToken: !!process.env.GITHUB_TOKEN,
-      tokenPrefix: process.env.GITHUB_TOKEN?.slice(0, 8) + '...'
+      hasToken: !!token,
+      tokenPrefix: token.slice(0, 8) + '...'
     });
 
-    const response = await request<GitHubResponse>(
-      ENDPOINT,
-      QUERY,
-      { login, from: from.toISOString(), to: now.toISOString() },
-      HEADERS
+    const response = await fetchGitHubContributions(
+      login,
+      from.toISOString(),
+      now.toISOString(),
+      headers
     );
 
     const days = response.user
@@ -133,12 +175,7 @@ export async function getMonthlyContributions(
       .contributionCalendar
       .weeks.flatMap((w: Week) => w.contributionDays);
 
-    // YYYY-MM 単位で集計
-    return days.reduce<Record<string, number>>((acc, d) => {
-      const ym = d.date.slice(0, 7);
-      acc[ym] = (acc[ym] ?? 0) + d.contributionCount;
-      return acc;
-    }, {});
+    return aggregateContributionsByMonth(days);
   } catch (error) {
     console.error('GitHub API Error:', error);
     
