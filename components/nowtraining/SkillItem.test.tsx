@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'jotai';
 import { SkillItem } from './SkillItem';
 import { Skill } from '@/types/skill';
@@ -21,31 +21,27 @@ const mockSkill: Skill = {
 
 describe('SkillItem', () => {
   it('スキル情報が正しく表示される', () => {
-    render(
+    const { container } = render(
       <Provider>
         <SkillItem skill={mockSkill} />
       </Provider>
     );
 
     // 星が3つ表示されることを確認
-    expect(screen.getByText('⭐⭐⭐')).toBeDefined();
+    expect(container.textContent).toContain('⭐⭐⭐');
     
     // 学習期間が表示されることを確認
-    expect(screen.getByText(/学習:/)).toBeDefined();
+    expect(container.textContent).toContain('学習:');
   });
 
   it('クリック時にスキルが選択される', () => {
-    const TestComponent = () => {
-      return (
-        <Provider>
-          <SkillItem skill={mockSkill} />
-        </Provider>
-      );
-    };
-
-    render(<TestComponent />);
+    const { container } = render(
+      <Provider>
+        <SkillItem skill={mockSkill} />
+      </Provider>
+    );
     
-    const skillItem = screen.getByText('⭐⭐⭐').closest('div');
+    const skillItem = container.querySelector('.cursor-pointer');
     fireEvent.click(skillItem!);
     
     // クリックイベントが発生することを確認
@@ -59,13 +55,13 @@ describe('SkillItem', () => {
       startedAt: '2025/05', // 2ヶ月前
     };
 
-    render(
+    const { container } = render(
       <Provider>
         <SkillItem skill={recentSkill} />
       </Provider>
     );
 
-    expect(screen.getByText(/学習: \d+ヶ月/)).toBeDefined();
+    expect(container.textContent).toMatch(/学習: \d+ヶ月/);
   });
 
   it('1年以上の学習期間が正しく表示される', () => {
@@ -74,12 +70,12 @@ describe('SkillItem', () => {
       startedAt: '2023/01', // 2年以上前
     };
 
-    render(
+    const { container } = render(
       <Provider>
         <SkillItem skill={longTermSkill} />
       </Provider>
     );
 
-    expect(screen.getByText(/学習: \d+年/)).toBeDefined();
+    expect(container.textContent).toMatch(/学習: \d+年/);
   });
 });
