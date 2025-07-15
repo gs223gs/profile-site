@@ -5,7 +5,6 @@ import { TechStack } from "@/components/hero/TechStack";
 import { GitHubContribution } from "@/components/hero/GitHubContribution";
 import { SwiperGallery } from "@/components/hero/SwiperGallery";
 import { profileImages } from "@/types/image";
-import { FullScreenPage } from "@/components/layout/FullScreenPage";
 
 export default function HeroPage() {
   return (
