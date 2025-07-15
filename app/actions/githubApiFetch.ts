@@ -32,9 +32,9 @@
 
 import { request, gql } from 'graphql-request';
 
-export const ENDPOINT = 'https://api.github.com/graphql';
+const ENDPOINT = 'https://api.github.com/graphql';
 
-export const QUERY = gql`
+const QUERY = gql`
   query ($login: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $login) {
       contributionsCollection(from: $from, to: $to) {
@@ -51,16 +51,16 @@ export const QUERY = gql`
   }
 `;
 
-export interface ContributionDay {
+interface ContributionDay {
   date: string;
   contributionCount: number;
 }
 
-export interface Week {
+interface Week {
   contributionDays: ContributionDay[];
 }
 
-export interface GitHubResponse {
+interface GitHubResponse {
   user: {
     contributionsCollection: {
       contributionCalendar: {
@@ -71,12 +71,12 @@ export interface GitHubResponse {
 }
 
 // デフォルトユーザー名
-export const DEFAULT_USER = "gs223gs";
+const DEFAULT_USER = "gs223gs";
 
 /**
  * GitHubトークンを取得
  */
-export function getGitHubToken(): string {
+function getGitHubToken(): string {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
     throw new Error('GITHUB_TOKEN environment variable is not set');
@@ -87,7 +87,7 @@ export function getGitHubToken(): string {
 /**
  * APIリクエスト用のヘッダーを作成
  */
-export function createHeaders(token: string) {
+function createHeaders(token: string) {
   return {
     Authorization: `Bearer ${token}`,
     'User-Agent': 'NextJS-App'
@@ -97,7 +97,7 @@ export function createHeaders(token: string) {
 /**
  * 日次コントリビューションデータを月次に集計
  */
-export function aggregateContributionsByMonth(days: ContributionDay[]): Record<string, number> {
+function aggregateContributionsByMonth(days: ContributionDay[]): Record<string, number> {
   return days.reduce<Record<string, number>>((acc, d) => {
     const ym = d.date.slice(0, 7);
     acc[ym] = (acc[ym] ?? 0) + d.contributionCount;
@@ -108,7 +108,7 @@ export function aggregateContributionsByMonth(days: ContributionDay[]): Record<s
 /**
  * GitHub APIへのリクエストを実行
  */
-export async function fetchGitHubContributions(
+async function fetchGitHubContributions(
   login: string,
   from: string,
   to: string,
