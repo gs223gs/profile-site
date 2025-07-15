@@ -2,22 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'jotai';
 import { Description } from './Description';
-import { selectedSkillAtom } from '@/atoms/skillAtoms';
-import { Skill } from '@/types/skill';
 
-const mockSkill: Skill = {
-  id: 'react',
-  name: 'React (TypeScript)',
-  iconUrl: 'https://skillicons.dev/icons?i=react',
-  level: 3,
-  startedAt: '2024/07',
-  totalHours: 300,
-  overview: 'モダンフロント転向のきっかけとなったライブラリ。',
-  highlights: [
-    'Jotai・React Hook Form・TanStack Query を活用',
-    'Todo / Blog SPA を単独実装（Jest UT30 本）',
-  ],
-};
 
 describe('Description', () => {
   it('スキルが選択されていない場合は初期メッセージを表示', () => {
