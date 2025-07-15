@@ -1,41 +1,74 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { Provider } from 'jotai';
+import { render } from '@testing-library/react';
+import { Provider, createStore } from 'jotai';
 import { Description } from './Description';
+import { selectedSkillAtom } from '@/atoms/skillAtoms';
+import { Skill } from '@/types/skill';
 
+const mockSkill: Skill = {
+  id: 'react',
+  name: 'React (TypeScript)',
+  iconUrl: 'https://skillicons.dev/icons?i=react',
+  level: 3,
+  startedAt: '2024/07',
+  totalHours: 300,
+  overview: 'モダンフロント転向のきっかけとなったライブラリ。',
+  highlights: [
+    'Jotai・React Hook Form・TanStack Query を活用',
+    'Todo / Blog SPA を単独実装（Jest UT30 本）',
+  ],
+};
 
 describe('Description', () => {
-  it('スキルが選択されていない場合は初期メッセージを表示', () => {
-    render(
-      <Provider>
-        <Description />
-      </Provider>
-    );
+  describe('when no skill is selected', () => {
+    it('shows initial message', () => {
+      const { container } = render(
+        <Provider>
+          <Description />
+        </Provider>
+      );
 
-    expect(screen.getByText('スキルを選択してください')).toBeDefined();
-    expect(screen.getByText('上記のスキルアイコンをクリックすると詳細情報が表示されます')).toBeDefined();
+      expect(container.textContent).toContain('スキルを選択してください');
+      expect(container.textContent).toContain('上記のスキルアイコンをクリックすると詳細情報が表示されます');
+    });
   });
 
-  it('スキルが選択されている場合は詳細情報を表示', () => {
-    // 最初に初期状態でレンダリング
-    const { container } = render(
-      <Provider>
-        <Description />
-      </Provider>
-    );
+  describe('when skill is selected', () => {
+    it('shows skill details with total hours', () => {
+      const store = createStore();
+      store.set(selectedSkillAtom, mockSkill);
 
-    // 初期状態では選択メッセージが表示されることを確認
-    expect(container.textContent).toContain('スキルを選択してください');
-  });
+      const { container } = render(
+        <Provider store={store}>
+          <Description />
+        </Provider>
+      );
 
-  it('累計時間がないスキルでは時間表示しない', () => {
-    const { container } = render(
-      <Provider>
-        <Description />
-      </Provider>
-    );
+      expect(container.textContent).toContain('React (TypeScript)');
+      expect(container.textContent).toContain('レベル: ⭐⭐⭐');
+      expect(container.textContent).toContain('開始: 2024/07');
+      expect(container.textContent).toContain('累計: 300時間');
+      expect(container.textContent).toContain(mockSkill.overview);
+      expect(container.textContent).toContain('主な取り組み・実績');
+    });
 
-    // 初期状態では選択メッセージが表示されることを確認
-    expect(container.textContent).toContain('スキルを選択してください');
+    it('hides total hours when not provided', () => {
+      const skillWithoutHours: Skill = {
+        ...mockSkill,
+        totalHours: undefined,
+      };
+
+      const store = createStore();
+      store.set(selectedSkillAtom, skillWithoutHours);
+
+      const { container } = render(
+        <Provider store={store}>
+          <Description />
+        </Provider>
+      );
+
+      expect(container.textContent).toContain('React (TypeScript)');
+      expect(container.textContent).not.toContain('累計:');
+    });
   });
 });
