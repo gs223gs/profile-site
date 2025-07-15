@@ -20,8 +20,12 @@ const Sidebar = () => {
         }`}
       >
         {/* Header */}
-        <div className={`border-b border-gray-200 flex items-center ${isOpen ? 'p-6 justify-between' : 'p-4 justify-center'}`}>
-          {isOpen && <h1 className="text-2xl font-bold text-gray-900">T.Miura</h1>}
+        <div className={`border-b border-gray-200 flex items-center ${isOpen ? 'p-6 justify-between' : 'p-3 justify-center'}`}>
+          <h1 className={`text-2xl font-bold text-gray-900 transition-all duration-300 ${
+            isOpen ? 'w-auto opacity-100 delay-300' : 'w-0 opacity-0 overflow-hidden'
+          }`}>
+            T.Miura
+          </h1>
           <Button
             onClick={toggle}
             variant="ghost"
@@ -45,12 +49,12 @@ const Sidebar = () => {
               <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                 <span className="text-xs font-medium text-gray-600">TM</span>
               </div>
-              {isOpen && (
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">T.Miura</p>
-                  <p className="text-xs text-gray-500 truncate">プロフィール</p>
-                </div>
-              )}
+              <div className={`flex-1 min-w-0 transition-all duration-300 ${
+                isOpen ? 'w-auto opacity-100 delay-300' : 'w-0 opacity-0 overflow-hidden'
+              }`}>
+                <p className="text-sm font-medium text-gray-900 truncate">T.Miura</p>
+                <p className="text-xs text-gray-500 truncate">プロフィール</p>
+              </div>
             </div>
           </UserProfileModal>
         </div>

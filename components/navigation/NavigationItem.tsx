@@ -24,7 +24,11 @@ const NavigationItem = ({ route, isActive, isCollapsed = false }: NavigationItem
       title={isCollapsed ? route.label : undefined}
     >
       {Icon && <Icon className={cn("h-5 w-5", !isCollapsed && "mr-3")} />}
-      {!isCollapsed && route.label}
+      <span className={`transition-all duration-300 ${
+        isCollapsed ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100 delay-300'
+      }`}>
+        {route.label}
+      </span>
     </Link>
   )
 }
