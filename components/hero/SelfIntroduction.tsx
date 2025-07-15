@@ -1,0 +1,28 @@
+export const SelfIntroduction = () => {
+  return (
+    <div className="h-full flex flex-col justify-center p-4">
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">自己紹介</h2>
+      <div className="space-y-3 text-gray-700">
+        <p>
+          はじめまして、身長188cmのT.Miuraです。
+        </p>
+        <p>
+          Javaエンジニアを生業としております.
+        </p>
+        <p>
+          個人ではReactやNext.jsを学習中です.
+        </p>
+        <p>
+          「志は身長より高く」をモットーに,
+          常に高い目標を持って取り組んでいます.
+          成長意欲や取り組む姿勢，それと身長は誰にも負けないと自負しております．
+        </p>
+        <p>私のエンジニア人生の始まりは，職業訓練で2年間専門学校に通学したことが始まりです．元々未経験ですが，職業訓練のおかげで自信をつけることができました．</p>
+        <p>
+          問題解決力と継続的な学習姿勢を大切にし,
+          チームと共に成長できる環境を求めています.
+        </p>
+      </div>
+    </div>
+  )
+}
