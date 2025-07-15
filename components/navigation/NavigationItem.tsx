@@ -17,6 +17,7 @@ const NavigationItem = ({ route, isActive, isCollapsed = false }: NavigationItem
       className={cn(
         'flex items-center text-sm font-medium rounded-lg transition-colors',
         isCollapsed ? 'justify-center p-3' : 'px-4 py-3',
+        isCollapsed && 'aspect-square',
         isActive
           ? 'bg-gray-900 text-white'
           : 'text-gray-700 hover:bg-gray-100'

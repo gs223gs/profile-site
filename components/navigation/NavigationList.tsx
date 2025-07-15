@@ -11,7 +11,7 @@ const NavigationList = () => {
   const [isOpen] = useAtom(sidebarOpenAtom)
 
   return (
-    <div className={`flex-1 ${isOpen ? 'p-4' : 'p-2'} space-y-2`}>
+    <div className={`flex-1 ${isOpen ? 'p-4' : 'p-2'} space-y-0`}>
       {routes.map((route) => (
         <NavigationItem
           key={route.href}
