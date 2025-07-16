@@ -1,8 +1,12 @@
+import { CareerList } from "@/components/career/CareerList";
+
 export default function CareerPage() {
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Career</h1>
-      <p>キャリア情報を表示するページです。</p>
+    <div className="max-w-6xl mx-auto p-6">
+      <p className="text-gray-600 text-center mb-8">
+        これまでの学習・就業経歴です。タグで絞り込み表示できます。
+      </p>
+      <CareerList />
     </div>
-  )
+  );
 }
