@@ -55,7 +55,7 @@ export function ContactForm() {
         });
       }
     } catch (error) {
-      console.error("Submit error:", error);
+      console.log("Submit error:", error);
       setSubmitResult({
         success: false,
         message: "予期しないエラーが発生しました。",
