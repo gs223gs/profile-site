@@ -53,7 +53,7 @@ export const careers: readonly Career[] = [
   {
     date: '2023-03',
     title: 'ダーツプロ 資格取得',
-    detail: '12週・週30h トレーニング',
+    detail: 'ダーツを始めてわずか3ヶ月でプロ入り、当時は平日5時間休日12時間ダーツしてました',
     tags: ['misc'],
   },
   {
