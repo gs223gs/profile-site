@@ -35,7 +35,8 @@ export const skills: readonly Skill[] = [
     overview: 'React ルーティング効率化を目的に学習中。ポートフォリオで採用。',
     highlights: [
       'App Router・SSG/ISR の思想を学習中です。',
-
+      'Server Components と Client Components の使い分けを実践',
+      'このポートフォリオサイトで実際に採用し、継続的に理解を深めています',
     ],
   },
 
@@ -50,6 +51,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'Spring Boot で三層アーキテクチャを実装',
       'JUnit＋MockMvc で単体テスト',
+      'オブジェクト指向設計パターンの理解と実践',
     ],
   },
   {
@@ -73,7 +75,7 @@ export const skills: readonly Skill[] = [
     overview: 'DB設計と正規化を行えます',
     highlights: [
       '現在はより良いパフォーマンスを出すためのクエリ設計を学習中です',
-
+      'ER図からテーブル設計まで一貫して実装可能',
     ],
   },
 
@@ -98,8 +100,9 @@ export const skills: readonly Skill[] = [
     startedAt: '2024/07',
     overview: 'GitHub Flow を軸にバージョン管理。',
     highlights: [
-      'チーム開発の必需品であり，手足のように扱えます',
-
+      'ブランチ戦略の理解とコンフリクト解決',
+      'コミット履歴を意識した開発フローの実践',
+      'リベースとマージの使い分けができます',
     ],
   },
   {
@@ -122,7 +125,9 @@ export const skills: readonly Skill[] = [
     startedAt: '2025/04',
     overview: 'Lint/Test/Build の CI パイプラインを構築中。',
     highlights: [
-      '現代開発の必需品であるCIをプロジェクトに組み込むために使用しています。特にLintは非推奨な書き方を「覚える」のではなく自動で抑制することで貢献してくれています',
+      '自動テスト・デプロイの基本ワークフローを理解',
+      'Lintによるコード品質の自動化を実践中',
+      'CI/CDの重要性を認識し、継続的に学習を進めています',
     ],
   },
 
@@ -137,6 +142,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'データベース機能でカンバンボード運用',
       'テンプレートで議事録・仕様書を標準化',
+      '学習ノートから開発ドキュメントまで一元管理',
     ],
   },
   {
@@ -149,6 +155,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'ER 図・スライド作成にも流用',
       '今後は UI コンポーネント管理を予定',
+      'デザインシステムの基礎概念を学習中',
     ],
   },
 ] as const;
