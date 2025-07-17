@@ -7,7 +7,7 @@ type PageDescriptionProps = {
 
 export const PageDescription = ({ children, className }: PageDescriptionProps) => {
   return (
-    <p className={cn("text-gray-600 text-center", className)}>
+    <p className={cn("text-gray-600 text-center mb-8", className)}>
       {children}
     </p>
   );

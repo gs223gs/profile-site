@@ -1,28 +1,31 @@
 import { ContactForm } from "@/components/contact/ContactForm";
-import { BorderedContainer } from "@/components/ui/bordered-container";
+import { Card, CardContent } from "@/components/ui/card";
+import { PageDescription } from "@/components/ui/page-description";
 
-export const runtime = 'edge'; 
+export const runtime = "edge";
 
 export default function ContactPage() {
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <div className="mb-8">
+      <div>
         <h1 className="text-3xl font-bold text-center mb-2">お問い合わせ</h1>
-        <p className="text-gray-600 text-center">
+        <PageDescription>
           お仕事のご依頼・ご相談など、お気軽にお問い合わせください。
-        </p>
+        </PageDescription>
       </div>
-      
-      <BorderedContainer>
-        <ContactForm />
-      </BorderedContainer>
 
-      <div className="mt-8 text-center text-sm text-gray-500">
-        <p>通常2〜3営業日以内にご返信いたします。</p>
-        <p className="mt-2">
-          お急ぎの場合は、GitHubやTwitter(X)のDMでもご連絡いただけます。
-        </p>
-      </div>
+      <Card>
+        <CardContent className="p-6">
+          <ContactForm />
+        </CardContent>
+      </Card>
+
+      <PageDescription className="mt-4">
+        通常2〜3営業日以内にご返信いたします。
+      </PageDescription>
+      <PageDescription>
+        お急ぎの場合は、GitHubやTwitter(X)のDMでもご連絡いただけます。
+      </PageDescription>
     </div>
   );
 }

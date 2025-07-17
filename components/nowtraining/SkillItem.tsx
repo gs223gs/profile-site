@@ -4,7 +4,7 @@ import { useAtom } from "jotai";
 import Image from "next/image";
 import { Skill } from "@/types/skill";
 import { selectSkillAtom, isSkillModalOpenAtom } from "@/atoms/skillAtoms";
-import { BorderedContainer } from "../ui/bordered-container";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface SkillItemProps {
   skill: Skill;
@@ -16,7 +16,6 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
 
   const handleClick = () => {
     selectSkill(skill);
-    
     // モバイル時のみモーダルを開く
     if (window.innerWidth < 768) {
       setIsModalOpen(true);
@@ -57,10 +56,13 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
   };
 
   return (
-    <BorderedContainer className="w-full hover:shadow-lg transition-shadow cursor-pointer">
-      <div onClick={handleClick} className="flex flex-col items-center">
+    <Card
+      className="w-full hover:shadow-lg transition-shadow cursor-pointer"
+      onClick={handleClick}
+    >
+      <CardContent className="flex flex-col items-center justify-center h-full">
         {/* アイコン */}
-        <div className="w-16 h-16 mb-2  flex items-center justify-center">
+        <div className="w-16 h-16 mb-2 flex items-center justify-center">
           <Image
             src={skill.iconUrl}
             alt={skill.name}
@@ -77,7 +79,7 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
         <div className="text-xs text-gray-600 text-center">
           学習: {calculateStudyPeriod(skill.startedAt)}
         </div>
-      </div>
-    </BorderedContainer>
+      </CardContent>
+    </Card>
   );
 };
