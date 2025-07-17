@@ -16,7 +16,11 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
 
   const handleClick = () => {
     selectSkill(skill);
-    setIsModalOpen(true);
+    
+    // モバイル時のみモーダルを開く
+    if (window.innerWidth < 768) {
+      setIsModalOpen(true);
+    }
   };
 
   // レベル数に応じた星を生成
