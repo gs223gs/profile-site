@@ -8,14 +8,17 @@ export default function NowTrainingPage() {
       <p className="text-gray-600 text-center">
         現在学習中・活用中の技術スタック一覧です。アイコンをクリックすると詳細が表示されます。
       </p>
+      <div className="flex gap-4 items-stretch">
+        <div className="flex-1">
+          <SkillList />
+        </div>
 
-      <SkillList />
-      
-      {/* デスクトップ表示 */}
-      <div className="hidden md:block">
-        <Description />
+        {/* デスクトップ表示 */}
+        <div className="hidden md:block flex-1">
+          <Description />
+        </div>
       </div>
-      
+
       {/* モバイル表示 */}
       <div className="block md:hidden">
         <SkillModal />
