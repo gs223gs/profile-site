@@ -3,9 +3,11 @@
 import { useSetAtom } from "jotai";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { sidebarToggleAtom } from "@/atoms/sidebarAtoms";
 import { routes } from "@/types/navigation";
 import NavigationItemCollapsed from "./NavigationItemCollapsed";
+import { UserProfileModal } from "./UserProfileModal";
 import { usePathname } from "next/navigation";
 
 export function SidebarCollapsed() {
@@ -40,11 +42,14 @@ export function SidebarCollapsed() {
 
       {/* Account Section */}
       <div className="border-t border-gray-200 p-2">
-        <div className="flex items-center justify-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
-          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-            <span className="text-xs font-medium text-gray-600">TM</span>
+        <UserProfileModal>
+          <div className="flex items-center justify-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+            <Avatar className="w-8 h-8">
+              <AvatarImage src="/T-Miura1.jpg" alt="T.Miura" />
+              <AvatarFallback>TM</AvatarFallback>
+            </Avatar>
           </div>
-        </div>
+        </UserProfileModal>
       </div>
     </nav>
   );
