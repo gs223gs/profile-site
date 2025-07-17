@@ -16,34 +16,36 @@ export const skills: readonly Skill[] = [
   /* ---------------- フロントエンド ---------------- */
   {
     id: 'react',
-    name: 'React (TypeScript)',
+    name: 'React',
     iconUrl: 'https://skillicons.dev/icons?i=react',
     level: 3,                         // ⭐⭐⭐
     startedAt: '2024/07',
-    totalHours: 300,
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
-      'Jotai・React Hook Form・TanStack Query を活用',
       'スキル感はsupabaseを使用したOauth, CRUD,等を問題なく実装できます。',
+      'shadcn, Tailwind, TypeScript',
+      'React-hook-form, zod, jotai',
+      'Vitest, Tanstack Query',
     ],
   },
   {
     id: 'nextjs',
-    name: 'Next.js (TypeScript)',
+    name: 'Next.js',
     iconUrl: 'https://skillicons.dev/icons?i=nextjs',
     level: 1,                         // ⭐
     startedAt: '2025/06',
     overview: 'React ルーティング効率化を目的に学習中。ポートフォリオで採用。',
     highlights: [
-      'App Router・SSG/ISR の基礎を習得',
-      'Tailwind＋shadcn/ui で UI 実装',
+      'App Router・SSG/ISR の思想を学習中です。',
+      'Server Components と Client Components の使い分けを実践',
+      'このポートフォリオサイトで実際に採用し、継続的に理解を深めています',
     ],
   },
 
   /* ---------------- バックエンド ---------------- */
   {
     id: 'java',
-    name: 'Java / Spring Boot',
+    name: 'Java',
     iconUrl: 'https://skillicons.dev/icons?i=java',
     level: 3,                         // ⭐⭐⭐
     startedAt: '2023/04',
@@ -51,6 +53,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'Spring Boot で三層アーキテクチャを実装',
       'JUnit＋MockMvc で単体テスト',
+      'オブジェクト指向設計パターンの理解と実践',
     ],
   },
   {
@@ -62,7 +65,7 @@ export const skills: readonly Skill[] = [
     overview: '個人開発の BaaS として採用。Auth・DB を統合利用。',
     highlights: [
       'Row‑Level Security 設定を理解',
-      'ダッシュボード ER 図自動生成がお気に入り',
+      'ダッシュボード ER 図自動生成がお気に入りです',
     ],
   },
   {
@@ -71,10 +74,10 @@ export const skills: readonly Skill[] = [
     iconUrl: 'https://skillicons.dev/icons?i=postgresql',
     level: 3,                         // ⭐⭐⭐
     startedAt: '2023/04',
-    overview: 'DB 設計と第 3 正規化を習得。',
+    overview: 'DB設計と正規化を行えます',
     highlights: [
-      '現在はより良いパフォーマンスを出すためのクエリ設計を学習中です。',
-      'ER 図作成・DDL 生成を経験',
+      '現在はより良いパフォーマンスを出すためのクエリ設計を学習中です',
+      'ER図からテーブル設計まで一貫して実装可能',
     ],
   },
 
@@ -99,8 +102,9 @@ export const skills: readonly Skill[] = [
     startedAt: '2024/07',
     overview: 'GitHub Flow を軸にバージョン管理。',
     highlights: [
-      'Conventional Commits・PR Template を運用',
-      'rebase／squash を用いた履歴整理',
+      'ブランチ戦略の理解とコンフリクト解決',
+      'コミット履歴を意識した開発フローの実践',
+      'リベースとマージの使い分けができます',
     ],
   },
   {
@@ -112,7 +116,7 @@ export const skills: readonly Skill[] = [
     overview: '学生 PJ 含む極小規模チーム開発で使用。',
     highlights: [
       'Issue → Branch → PR のフローを実践',
-      '公開リポジトリ gs223gs で学習履歴を管理',
+      'プロダクト，ポートフォリオだけでなく学習でも積極的に使用しています',
     ],
   },
   {
@@ -121,9 +125,11 @@ export const skills: readonly Skill[] = [
     iconUrl: 'https://skillicons.dev/icons?i=githubactions',
     level: 1,                         // ⭐
     startedAt: '2025/04',
-    overview: 'Lint／Test／Build の CI パイプラインを構築中。',
+    overview: 'Lint/Test/Build の CI パイプラインを構築中。',
     highlights: [
-      '現代開発の必需品であるCIをプロジェクトに組み込むために使用しています。特にLintは非推奨な書き方を「覚える」のではなく自動で抑制することで貢献してくれています',
+      '自動テスト・デプロイの基本ワークフローを理解',
+      'Lintによるコード品質の自動化を実践中',
+      'CI/CDの重要性を認識し、継続的に学習を進めています',
     ],
   },
 
@@ -138,6 +144,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'データベース機能でカンバンボード運用',
       'テンプレートで議事録・仕様書を標準化',
+      '学習ノートから開発ドキュメントまで一元管理',
     ],
   },
   {
@@ -150,6 +157,7 @@ export const skills: readonly Skill[] = [
     highlights: [
       'ER 図・スライド作成にも流用',
       '今後は UI コンポーネント管理を予定',
+      'デザインシステムの基礎概念を学習中',
     ],
   },
 ] as const;

@@ -9,7 +9,7 @@ export const Description = () => {
 
   if (!selectedSkill) {
     return (
-      <BorderedContainer className="w-full mt-8">
+      <BorderedContainer className="w-full ">
         <div className="flex items-center justify-center h-48 text-gray-500">
           <div className="text-center">
             <h3 className="text-lg font-medium mb-2">スキルを選択してください</h3>
@@ -21,7 +21,7 @@ export const Description = () => {
   }
 
   return (
-    <BorderedContainer className="w-full mt-8">
+    <BorderedContainer className="w-full">
       <div className="p-6">
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">{selectedSkill.name}</h2>
