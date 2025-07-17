@@ -9,18 +9,26 @@ import { profileImages } from "@/types/image";
 export default function Home() {
   return (
     <div className="p-4 md:p-8 m-2 md:m-3 h-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 h-full">
-        {/* 写真スライドショー */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* 写真スライドショー - 正方形 */}
         <div className="lg:col-span-1">
-          <Card>
-            <CardContent className="p-6">
+          <Card className="aspect-square">
+            <CardContent className="p-6 h-full">
               <SwiperGallery images={profileImages} />
             </CardContent>
           </Card>
         </div>
 
-        {/* キャッチコピー */}
-        <div className="lg:col-span-2">
+        {/* 右側のコンテナ: 技術スタックとキャッチコピー */}
+        <div className="lg:col-span-2 flex flex-col gap-4">
+          {/* 技術スタック */}
+          <Card className="h-full">
+            <CardContent className="p-6">
+              <TechStack />
+            </CardContent>
+          </Card>
+
+          {/* キャッチコピー */}
           <Card className="h-full">
             <CardContent className="p-6">
               <CatchPhrase />
@@ -29,7 +37,7 @@ export default function Home() {
         </div>
 
         {/* 自己紹介 */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-3">
           <Card>
             <CardContent className="p-6">
               <SelfIntroduction />
@@ -37,17 +45,8 @@ export default function Home() {
           </Card>
         </div>
 
-        {/* 技術スタック */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardContent className="p-6">
-              <TechStack />
-            </CardContent>
-          </Card>
-        </div>
-
         {/* GitHubコントリビュートグラフ */}
-        <div className="col-span-full">
+        <div className="lg:col-span-3">
           <Card>
             <CardContent className="p-6">
               <GitHubContribution />
