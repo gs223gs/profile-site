@@ -24,7 +24,7 @@ export const skills: readonly Skill[] = [
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
       'Jotai・React Hook Form・TanStack Query を活用',
-      'Todo / Blog SPA を単独実装（Jest UT30 本）',
+      'スキル感はsupabaseを使用したOauth, CRUD,等を問題なく実装できます。',
     ],
   },
   {
@@ -73,7 +73,7 @@ export const skills: readonly Skill[] = [
     startedAt: '2023/04',
     overview: 'DB 設計と第 3 正規化を習得。',
     highlights: [
-      'EXPLAIN を用いたクエリ最適化の基礎',
+      '現在はより良いパフォーマンスを出すためのクエリ設計を学習中です。',
       'ER 図作成・DDL 生成を経験',
     ],
   },
@@ -85,10 +85,10 @@ export const skills: readonly Skill[] = [
     iconUrl: 'https://skillicons.dev/icons?i=docker',
     level: 2,                         // ⭐⭐
     startedAt: '2025/07',
-    overview: '"環境を汚さない" ために導入。開発環境統一を実現。',
+    overview: '環境差異、衝突を減らすために導入',
     highlights: [
       'docker‑compose で Next.js＋Postgres を統合',
-      '開発／本番の差異を解消',
+      'チーム開発時にも開発環境をすぐに整えれるため重宝しています',
     ],
   },
   {
@@ -123,8 +123,7 @@ export const skills: readonly Skill[] = [
     startedAt: '2025/04',
     overview: 'Lint／Test／Build の CI パイプラインを構築中。',
     highlights: [
-      'OpenAI Review を自動実行',
-      'matrix build・cache 基礎を理解',
+      '現代開発の必需品であるCIをプロジェクトに組み込むために使用しています。特にLintは非推奨な書き方を「覚える」のではなく自動で抑制することで貢献してくれています',
     ],
   },
 
