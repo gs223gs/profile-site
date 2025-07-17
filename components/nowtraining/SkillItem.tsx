@@ -3,7 +3,7 @@
 import { useAtom } from "jotai";
 import Image from "next/image";
 import { Skill } from "@/types/skill";
-import { selectSkillAtom } from "@/atoms/skillAtoms";
+import { selectSkillAtom, isSkillModalOpenAtom } from "@/atoms/skillAtoms";
 import { BorderedContainer } from "../ui/bordered-container";
 
 interface SkillItemProps {
@@ -12,9 +12,11 @@ interface SkillItemProps {
 
 export const SkillItem = ({ skill }: SkillItemProps) => {
   const [, selectSkill] = useAtom(selectSkillAtom);
+  const [, setIsModalOpen] = useAtom(isSkillModalOpenAtom);
 
   const handleClick = () => {
     selectSkill(skill);
+    setIsModalOpen(true);
   };
 
   // レベル数に応じた星を生成
@@ -63,7 +65,7 @@ export const SkillItem = ({ skill }: SkillItemProps) => {
             className="object-contain"
           />
         </div>
-
+        <div className="flex flex-col items-center">{skill.name}</div>
         {/* 星評価 */}
         <div className="text-sm mb-1">{renderStars(skill.level)}</div>
 

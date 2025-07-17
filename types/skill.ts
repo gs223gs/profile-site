@@ -16,11 +16,10 @@ export const skills: readonly Skill[] = [
   /* ---------------- フロントエンド ---------------- */
   {
     id: 'react',
-    name: 'React (TypeScript)',
+    name: 'React',
     iconUrl: 'https://skillicons.dev/icons?i=react',
     level: 3,                         // ⭐⭐⭐
     startedAt: '2024/07',
-    totalHours: 300,
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
       'Jotai・React Hook Form・TanStack Query を活用',
@@ -29,21 +28,21 @@ export const skills: readonly Skill[] = [
   },
   {
     id: 'nextjs',
-    name: 'Next.js (TypeScript)',
+    name: 'Next.js',
     iconUrl: 'https://skillicons.dev/icons?i=nextjs',
     level: 1,                         // ⭐
     startedAt: '2025/06',
     overview: 'React ルーティング効率化を目的に学習中。ポートフォリオで採用。',
     highlights: [
-      'App Router・SSG/ISR の基礎を習得',
-      'Tailwind＋shadcn/ui で UI 実装',
+      'App Router・SSG/ISR の思想を学習中です。',
+
     ],
   },
 
   /* ---------------- バックエンド ---------------- */
   {
     id: 'java',
-    name: 'Java / Spring Boot',
+    name: 'Java',
     iconUrl: 'https://skillicons.dev/icons?i=java',
     level: 3,                         // ⭐⭐⭐
     startedAt: '2023/04',

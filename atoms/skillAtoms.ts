@@ -11,3 +11,6 @@ export const selectSkillAtom = atom(
     set(selectedSkillAtom, skill);
   }
 );
+
+// モバイル用モーダルの開閉状態を管理
+export const isSkillModalOpenAtom = atom<boolean>(false);

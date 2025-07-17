@@ -1,5 +1,6 @@
 import { SkillList } from "@/components/nowtraining/SkillList";
 import { Description } from "@/components/nowtraining/Description";
+import { SkillModal } from "@/components/nowtraining/SkillModal";
 
 export default function NowTrainingPage() {
   return (
@@ -9,7 +10,16 @@ export default function NowTrainingPage() {
       </p>
 
       <SkillList />
-      <Description />
+      
+      {/* デスクトップ表示 */}
+      <div className="hidden md:block">
+        <Description />
+      </div>
+      
+      {/* モバイル表示 */}
+      <div className="block md:hidden">
+        <SkillModal />
+      </div>
     </div>
   );
 }
