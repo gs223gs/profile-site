@@ -4,7 +4,9 @@ import { SelfIntroduction } from "@/components/hero/SelfIntroduction";
 import { TechStack } from "@/components/hero/TechStack";
 import { GitHubContribution } from "@/components/hero/GitHubContribution";
 import { SwiperGallery } from "@/components/hero/SwiperGallery";
+import { LatestCareer } from "@/components/hero/LatestCareer";
 import { profileImages } from "@/types/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -20,16 +22,28 @@ export default function Home() {
         </div>
 
         {/* 右側のコンテナ: 技術スタックとキャッチコピー */}
-        <div className="lg:col-span-2 flex flex-col gap-4">
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* 技術スタック */}
-          <Card className="h-full">
-            <CardContent className="p-6">
-              <TechStack />
-            </CardContent>
+
+          <Card className="hover:shadow-md transition-all cursor-pointer h-full flex items-center justify-center">
+            <Link href="/nowtraining" >
+              <CardContent className="p-6 ">
+                <TechStack />
+              </CardContent>
+            </Link>
+          </Card>
+
+          {/* 最新のキャリア */}
+          <Card className="block hover:shadow-md transition-all cursor-pointer">
+            <Link href="/career">
+              <CardContent className="p-6">
+                <LatestCareer />
+              </CardContent>
+            </Link>
           </Card>
 
           {/* キャッチコピー */}
-          <Card className="h-full">
+          <Card className="md:col-span-2">
             <CardContent className="p-6">
               <CatchPhrase />
             </CardContent>
