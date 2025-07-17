@@ -11,8 +11,15 @@ type RepositoryCardProps = {
 export default function RepositoryCard({ repository }: RepositoryCardProps) {
   const languageIcon = getLanguageIcon(repository.primaryLanguage?.name || null);
   
+  const handleCardClick = () => {
+    window.open(repository.url, '_blank', 'noopener,noreferrer');
+  };
+  
   return (
-    <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+    <Card 
+      className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer" 
+      onClick={handleCardClick}
+    >
       <CardHeader className="pb-3">
         <div className="flex items-center gap-3">
           {languageIcon && (
