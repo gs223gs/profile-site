@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { useSetAtom } from 'jotai'
-import { Menu } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { sidebarToggleAtom } from '@/atoms/sidebarAtoms'
-import { routes } from '@/types/navigation'
-import NavigationItemCollapsed from './NavigationItemCollapsed'
-import { usePathname } from 'next/navigation'
+import { useSetAtom } from "jotai";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { sidebarToggleAtom } from "@/atoms/sidebarAtoms";
+import { routes } from "@/types/navigation";
+import NavigationItemCollapsed from "./NavigationItemCollapsed";
+import { usePathname } from "next/navigation";
 
 export function SidebarCollapsed() {
-  const toggle = useSetAtom(sidebarToggleAtom)
-  const pathname = usePathname()
+  const toggle = useSetAtom(sidebarToggleAtom);
+  const pathname = usePathname();
 
   return (
     <nav className="fixed left-0 top-0 h-full w-16 bg-white border-r border-gray-200 flex flex-col z-40">
@@ -47,5 +47,5 @@ export function SidebarCollapsed() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
