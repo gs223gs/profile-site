@@ -7,7 +7,6 @@ import { sidebarToggleAtom } from "@/atoms/sidebarAtoms";
 import { routes } from "@/types/navigation";
 import NavigationItemCollapsed from "./NavigationItemCollapsed";
 import { usePathname } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function SidebarCollapsed() {
   const toggle = useSetAtom(sidebarToggleAtom);
