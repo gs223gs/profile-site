@@ -22,8 +22,10 @@ export const skills: readonly Skill[] = [
     startedAt: '2024/07',
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
-      'Jotai・React Hook Form・TanStack Query を活用',
       'スキル感はsupabaseを使用したOauth, CRUD,等を問題なく実装できます。',
+      'shadcn, Tailwind, TypeScript',
+      'React-hook-form, zod, jotai',
+      'Vitest, Tanstack Query',
     ],
   },
   {
