@@ -40,7 +40,7 @@ export default function ContributionBar({ monthly }: Props) {
         top: 10,
         left: 40,
         right: 20,
-        bottom: 30,
+        bottom: 20,
       },
       xAxis: {
         type: "category",
@@ -63,7 +63,12 @@ export default function ContributionBar({ monthly }: Props) {
           data: values,
           animationDuration: 600,
           itemStyle: {
-            color: "#3b82f6", // Tailwind blue-500
+            color: "#22c55e", // Tailwind bg-green-500
+          },
+          emphasis: {
+            itemStyle: {
+              color: "#22c55e", // hover時も同じ色を維持
+            },
           },
           barWidth: "60%",
         },
@@ -73,15 +78,17 @@ export default function ContributionBar({ monthly }: Props) {
   );
 
   return (
-    <div className="w-full h-full">
-      <p className="text-center text-sm text-gray-500">GitHub Contributions</p>
-      <ReactECharts
-        option={option}
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-      />
+    <div className="w-full h-full flex flex-col">
+      <p className="text-center text-sm text-gray-500 mb-2">GitHub Contributions</p>
+      <div className="flex-1">
+        <ReactECharts
+          option={option}
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+        />
+      </div>
     </div>
   );
 }
