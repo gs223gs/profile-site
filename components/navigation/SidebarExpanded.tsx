@@ -5,6 +5,7 @@ import { X } from 'lucide-react'
 import NavigationList from './NavigationList'
 import { UserProfileModal } from './UserProfileModal'
 import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { sidebarToggleAtom } from '@/atoms/sidebarAtoms'
 
 export function SidebarExpanded() {
@@ -33,9 +34,10 @@ export function SidebarExpanded() {
       <div className="border-t border-gray-200 p-4">
         <UserProfileModal>
           <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-xs font-medium text-gray-600">TM</span>
-            </div>
+            <Avatar className="w-8 h-8">
+              <AvatarImage src="/T-Miura1.jpg" alt="T.Miura" />
+              <AvatarFallback>TM</AvatarFallback>
+            </Avatar>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate">T.Miura</p>
               <p className="text-xs text-gray-500 truncate">プロフィール</p>
