@@ -29,6 +29,12 @@ export const careers: readonly Career[] = [
     tags: ['work'],
   },
   {
+    date: '2024-03 – Now',
+    title: 'React 学習',
+    detail: 'React の思想やフロントエンドの学習を進めています',
+    tags: ['side'],
+  },
+  {
     date: '2024-04',
     title: '基本情報技術者 合格',
     tags: ['cert'],
@@ -37,12 +43,6 @@ export const careers: readonly Career[] = [
     date: '2024-03',
     title: 'IT パスポート 合格',
     tags: ['cert'],
-  },
-  {
-    date: '2024-03 – Now',
-    title: 'React 学習',
-    detail: 'React の思想やフロントエンドの学習を進めています',
-    tags: ['side'],
   },
   {
     date: '2023-04 – 2025-03',
