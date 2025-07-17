@@ -54,6 +54,8 @@ export default function ContributionBar({ monthly }: Props) {
         axisLabel: {
           fontSize: 11,
         },
+        interval: 100,
+        minInterval: 100,
       },
       series: [
         {
@@ -72,6 +74,7 @@ export default function ContributionBar({ monthly }: Props) {
 
   return (
     <div className="w-full h-full">
+      <p className="text-center text-sm text-gray-500">GitHub Contributions</p>
       <ReactECharts
         option={option}
         style={{
