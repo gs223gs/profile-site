@@ -19,7 +19,7 @@ export const skills: readonly Skill[] = [
     name: 'React',
     iconUrl: 'https://skillicons.dev/icons?i=react',
     level: 3,                         // ⭐⭐⭐
-    startedAt: '2024/07',
+    startedAt: '2025/02',
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
       'スキル感はsupabaseを使用したOauth, CRUD,等を問題なく実装できます。',
@@ -87,7 +87,7 @@ export const skills: readonly Skill[] = [
     name: 'Docker',
     iconUrl: 'https://skillicons.dev/icons?i=docker',
     level: 2,                         // ⭐⭐
-    startedAt: '2025/07',
+    startedAt: '2024/07',
     overview: '環境差異、衝突を減らすために導入',
     highlights: [
       'docker‑compose で Next.js＋Postgres を統合',
