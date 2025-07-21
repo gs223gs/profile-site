@@ -43,13 +43,12 @@ export default function RepositoryPagination({ onPageChange }: RepositoryPaginat
         className="flex items-center gap-2"
       >
         <ChevronLeft className="h-4 w-4" />
-        Previous
       </Button>
       
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <span>Page {currentPage} of {totalPages}</span>
+        <span> {currentPage}/{totalPages}</span>
         <span>•</span>
-        <span>{totalCount} repositories</span>
+        <span>{totalCount} </span>
       </div>
       
       <Button
@@ -59,7 +58,6 @@ export default function RepositoryPagination({ onPageChange }: RepositoryPaginat
         disabled={!hasNextPage}
         className="flex items-center gap-2"
       >
-        Next
         <ChevronRight className="h-4 w-4" />
       </Button>
     </div>
