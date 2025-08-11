@@ -8,6 +8,8 @@ import { LatestCareer } from "@/components/hero/LatestCareer";
 import { profileImages } from "@/types/image";
 import Link from "next/link";
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <div className="p-4 md:p-8 m-2 md:m-3 h-full">
