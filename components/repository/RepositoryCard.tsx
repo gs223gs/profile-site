@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Repository } from '@/types/repository';
@@ -11,15 +12,11 @@ type RepositoryCardProps = {
 export default function RepositoryCard({ repository }: RepositoryCardProps) {
   const languageIcon = getLanguageIcon(repository.primaryLanguage?.name || null);
   
-  const handleCardClick = () => {
-    window.open(repository.url, '_blank', 'noopener,noreferrer');
-  };
-  
   return (
-    <Card 
-      className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer" 
-      onClick={handleCardClick}
-    >
+    <Link href={repository.url} target="_blank" rel="noopener noreferrer" className="block">
+      <Card 
+        className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+      >
       <CardHeader className="pb-3">
         <div className="flex items-center gap-3">
           {languageIcon && (
@@ -83,5 +80,6 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
         </div>
       </CardContent>
     </Card>
+    </Link>
   );
 }

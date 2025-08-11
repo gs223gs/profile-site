@@ -1,65 +1,111 @@
-'use client';
-
-import { useAtom } from 'jotai';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { currentPageAtom, totalCountAtom, pageInfoAtom } from '@/atoms/repositoryAtoms';
-import { REPOSITORIES_PER_PAGE } from '@/constants/github';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type RepositoryPaginationProps = {
-  onPageChange: (page: number) => void;
+  currentPage: number;
+  totalPages: number;
+  pageInfo: {
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+    startCursor: string | null;
+    endCursor: string | null;
+  };
 };
 
-export default function RepositoryPagination({ onPageChange }: RepositoryPaginationProps) {
-  const [currentPage] = useAtom(currentPageAtom);
-  const [totalCount] = useAtom(totalCountAtom);
-  const [pageInfo] = useAtom(pageInfoAtom);
-  
-  const totalPages = Math.ceil(totalCount / REPOSITORIES_PER_PAGE);
-  const hasNextPage = pageInfo?.hasNextPage ?? false;
-  const hasPreviousPage = currentPage > 1;
-  
-  if (totalPages <= 1) return null;
-  
-  const handlePreviousPage = () => {
-    if (hasPreviousPage) {
-      onPageChange(currentPage - 1);
+export default function RepositoryPagination({
+  currentPage,
+  totalPages,
+  pageInfo,
+}: RepositoryPaginationProps) {
+  const createPageUrl = (page: number, cursor?: string | null) => {
+    if (page === 1) {
+      return "/repository";
     }
-  };
-  
-  const handleNextPage = () => {
-    if (hasNextPage) {
-      onPageChange(currentPage + 1);
+    
+    const url = `/repository/${page}`;
+    if (cursor) {
+      return `${url}?cursor=${cursor}`;
     }
+    return url;
   };
-  
+
+  const getPageNumbers = () => {
+    const pages = [];
+    const showPages = 5;
+    const halfShow = Math.floor(showPages / 2);
+    
+    const initialStartPage = Math.max(1, currentPage - halfShow);
+    const endPage = Math.min(totalPages, initialStartPage + showPages - 1);
+    
+    const startPage = endPage - initialStartPage < showPages - 1
+      ? Math.max(1, endPage - showPages + 1)
+      : initialStartPage;
+    
+    for (const i of Array.from({ length: endPage - startPage + 1 }, (_, idx) => startPage + idx)) {
+      pages.push(i);
+    }
+    
+    return pages;
+  };
+
   return (
-    <div className="flex items-center justify-center gap-6">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handlePreviousPage}
-        disabled={!hasPreviousPage}
-        className="flex items-center gap-2"
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </Button>
+    <div className="flex items-center justify-center gap-2">
+      {currentPage > 1 && (
+        <Link href={createPageUrl(currentPage - 1)}>
+          <Button variant="outline" size="icon">
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+        </Link>
+      )}
       
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <span> {currentPage}/{totalPages}</span>
-        <span>•</span>
-        <span>{totalCount} </span>
-      </div>
+      {currentPage > 2 && (
+        <>
+          <Link href={createPageUrl(1)}>
+            <Button variant="outline" size="sm">1</Button>
+          </Link>
+          {currentPage > 3 && <span className="px-2">...</span>}
+        </>
+      )}
       
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleNextPage}
-        disabled={!hasNextPage}
-        className="flex items-center gap-2"
-      >
-        <ChevronRight className="h-4 w-4" />
-      </Button>
+      {getPageNumbers().map((page) => {
+        const isCurrentPage = page === currentPage;
+        const nextPageCursor = page === currentPage + 1 ? pageInfo.endCursor : null;
+        
+        return isCurrentPage ? (
+          <Button
+            key={page}
+            variant="default"
+            size="sm"
+            disabled
+          >
+            {page}
+          </Button>
+        ) : (
+          <Link key={page} href={createPageUrl(page, nextPageCursor)}>
+            <Button variant="outline" size="sm">
+              {page}
+            </Button>
+          </Link>
+        );
+      })}
+      
+      {currentPage < totalPages - 1 && (
+        <>
+          {currentPage < totalPages - 2 && <span className="px-2">...</span>}
+          <Link href={createPageUrl(totalPages)}>
+            <Button variant="outline" size="sm">{totalPages}</Button>
+          </Link>
+        </>
+      )}
+      
+      {pageInfo.hasNextPage && currentPage < totalPages && (
+        <Link href={createPageUrl(currentPage + 1, pageInfo.endCursor)}>
+          <Button variant="outline" size="icon">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </Link>
+      )}
     </div>
   );
 }
