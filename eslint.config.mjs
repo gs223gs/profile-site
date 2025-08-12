@@ -48,7 +48,10 @@ const eslintConfig = [
       
       // let と var の使用を禁止 (const を推奨)
       "prefer-const": "error",
-      "no-var": "error"
+      "no-var": "error",
+      
+      // console.log の使用を禁止 (console.error, console.warn は許可)
+      "no-console": ["error", { "allow": ["warn", "error"] }]
     }
   }
 ];

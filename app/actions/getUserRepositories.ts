@@ -22,7 +22,6 @@ type GitHubGraphQLResponse = {
 
 function getGitHubToken(): string {
   const token = process.env.GITHUB_TOKEN;
-  console.log("[GITHUB_TOKEN_PRESENT]", token ? "yes" : "no", token ? `len=${token.length}` : "");
   if (!token) {
     throw new Error('GITHUB_TOKEN environment variable is not set');
   }
