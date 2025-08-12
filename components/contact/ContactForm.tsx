@@ -54,8 +54,8 @@ export function ContactForm() {
           message: result.error || "送信に失敗しました。もう一度お試しください。",
         });
       }
-    } catch (error) {
-      console.log("Submit error:", error);
+    } catch{
+
       setSubmitResult({
         success: false,
         message: "予期しないエラーが発生しました。",

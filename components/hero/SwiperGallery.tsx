@@ -12,7 +12,7 @@ interface SwiperGalleryProps {
 }
 
 export const SwiperGallery = ({ images }: SwiperGalleryProps) => {
-  console.log('SwiperGallery images:', images) // デバッグ用
+
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4">
@@ -35,9 +35,6 @@ export const SwiperGallery = ({ images }: SwiperGalleryProps) => {
                 priority={image.id === 1}
                 onError={(e) => {
                   console.error('画像読み込みエラー:', image.src, e)
-                }}
-                onLoad={() => {
-                  console.log('画像読み込み成功:', image.src)
                 }}
               />
             </div>

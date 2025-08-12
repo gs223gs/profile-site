@@ -155,14 +155,6 @@ export async function getMonthlyContributions(
     const token = getGitHubToken();
     const headers = createHeaders(token);
 
-    console.log('GitHub API Request:', {
-      login,
-      from: from.toISOString(),
-      to: now.toISOString(),
-      hasToken: !!token,
-      tokenPrefix: token.slice(0, 8) + '...'
-    });
-
     const response = await fetchGitHubContributions(
       login,
       from.toISOString(),

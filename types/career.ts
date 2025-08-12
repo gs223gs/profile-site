@@ -20,7 +20,7 @@ export interface Career {
 /** キャリア一覧 */
 export const careers: readonly Career[] = [
   {
-    date: '2025-08-26',
+    date: '2025-08-26(予定)',
     title: 'LT登壇',
     detail: '個人開発/環境依存LT会【BEELT #11】',
     // link: 'https://beenos.connpass.com/event/364554/',

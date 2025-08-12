@@ -22,6 +22,7 @@ type GitHubGraphQLResponse = {
 
 function getGitHubToken(): string {
   const token = process.env.GITHUB_TOKEN;
+  console.log("[GITHUB_TOKEN_PRESENT]", token ? "yes" : "no", token ? `len=${token.length}` : "");
   if (!token) {
     throw new Error('GITHUB_TOKEN environment variable is not set');
   }
@@ -43,13 +44,6 @@ export async function getUserRepositories({
   try {
     const token = getGitHubToken();
     const headers = createHeaders(token);
-
-    console.log('Fetching repositories:', {
-      login,
-      first,
-      after,
-      hasToken: !!token
-    });
 
     const response = await request<GitHubGraphQLResponse>(
       GITHUB_ENDPOINT,
