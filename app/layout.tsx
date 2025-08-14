@@ -16,23 +16,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://miura-dashboard.pages.dev/"),
+  metadataBase: new URL("https://miura-dashboard.pages.dev"),
   title: {
     default: "T.Miura's Dashboard",
     template: "%s | T.Miura's Dashboard",
   },
-  description: "T.Miura's Dashboard",
+  description: "志は身長より高く - T.Miuraのポートフォリオサイト",
   openGraph: {
     type: "website",
-    url: "https://miura-dashboard.pages.dev/",
+    url: "https://miura-dashboard.pages.dev",
+    title: "T.Miura's Dashboard",
+    description: "志は身長より高く - T.Miuraのポートフォリオサイト",
     siteName: "T.Miura's Dashboard",
-    // 画像は opengraph-image.png が自動で使われるため省略可
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "T.Miura's Dashboard",
+      },
+    ],
+    locale: "ja_JP",
   },
   twitter: {
     card: "summary_large_image",
     site: "@gs223gs_",
     creator: "@gs223gs_",
-    // 画像は twitter-image.png があればそれ、無ければOGが流用
+    title: "T.Miura's Dashboard",
+    description: "志は身長より高く - T.Miuraのポートフォリオサイト",
+    images: ["/twitter-image.png"],
   },
 };
 
