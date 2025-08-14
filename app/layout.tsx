@@ -16,9 +16,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "T.Miura's Dashboard",
+  metadataBase: new URL("https://miura-dashboard.pages.dev/"),
+  title: {
+    default: "T.Miura's Dashboard",
+    template: "%s | T.Miura's Dashboard",
+  },
   description: "T.Miura's Dashboard",
+  openGraph: {
+    type: "website",
+    url: "https://miura-dashboard.pages.dev/",
+    siteName: "T.Miura's Dashboard",
+    // 画像は opengraph-image.png が自動で使われるため省略可
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@gs223gs_",
+    creator: "@gs223gs_",
+    // 画像は twitter-image.png があればそれ、無ければOGが流用
+  },
 };
+
+
 
 export default function RootLayout({
   children,
