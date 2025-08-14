@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "T.Miura's Dashboard",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://miura-dashboard.pages.dev/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "T.Miura's Dashboard",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     creator: "@gs223gs_",
     title: "T.Miura's Dashboard",
     description: "志は身長より高く - T.Miuraのポートフォリオサイト",
-    images: ["/twitter-image.png"],
+    images: ["https://miura-dashboard.pages.dev/twitter-image.png"],
   },
 };
 
