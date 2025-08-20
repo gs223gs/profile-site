@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { SelfIntroduction } from "@/components/hero/SelfIntroduction";
 import { TechStack } from "@/components/hero/TechStack";
-import { GitHubContribution } from "@/components/hero/GitHubContribution";
+import GitHubContribution from "@/components/hero/GitHubContribution";
 import { SwiperGallery } from "@/components/hero/SwiperGallery";
 import { LatestCareer } from "@/components/hero/LatestCareer";
 import { profileImages } from "@/types/image";
@@ -12,7 +12,7 @@ import { fetchLaprasProfile } from "./actions/getLaprasUserJson";
 import { LaprasScore } from "@/types/lapras";
 import { ScoreCard } from "@/components/hero/ScoreCard";
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const profile = await fetchLaprasProfile();
