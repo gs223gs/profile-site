@@ -34,5 +34,12 @@ export const profileImages: ImageData[] = [
     alt: 'T.Miura プロフィール写真 4',
     width: 400,
     height: 400
+  },
+  {
+    id: 4,
+    src: '/T-Miura5.png',
+    alt: 'T.Miura プロフィール写真 5',
+    width: 400,
+    height: 400
   }
 ]
