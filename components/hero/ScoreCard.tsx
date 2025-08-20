@@ -7,19 +7,19 @@ type ScoreCardProps = {
 
 const scoreConfig = {
   engineer: {
-    label: 'Engineer',
+    label: '技術力',
     gradientFrom: 'from-blue-500',
-    gradientTo: 'to-blue-600'
+    gradientTo: 'bg-blue-500'
   },
   business: {
-    label: 'Business',
+    label: '市場価値',
     gradientFrom: 'from-green-500',
-    gradientTo: 'to-green-600'
+    gradientTo: 'bg-green-500'
   },
   influence: {
-    label: 'Influence',
+    label: '影響力',
     gradientFrom: 'from-purple-500',
-    gradientTo: 'to-purple-600'
+    gradientTo: 'bg-purple-500'
   }
 } as const
 

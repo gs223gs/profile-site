@@ -17,7 +17,7 @@ export const LatestCareer = () => {
         </div>
       </div>
       <div className="mt-4 text-sm text-gray-500 inline-flex items-center gap-1">
-        詳細はキャリアページで
+        他の情報はキャリアページで
         <span>→</span>
       </div>
     </div>
