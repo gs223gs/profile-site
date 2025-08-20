@@ -2,20 +2,34 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { SelfIntroduction } from "@/components/hero/SelfIntroduction";
 import { TechStack } from "@/components/hero/TechStack";
-import { GitHubContribution } from "@/components/hero/GitHubContribution";
+import GitHubContribution from "@/components/hero/GitHubContribution";
 import { SwiperGallery } from "@/components/hero/SwiperGallery";
 import { LatestCareer } from "@/components/hero/LatestCareer";
 import { profileImages } from "@/types/image";
 import Link from "next/link";
+import { fetchLaprasProfile } from "./actions/getLaprasUserJson";
 
-export const revalidate = 3600;
+import { LaprasScore } from "@/types/lapras";
+import { ScoreCard } from "@/components/hero/ScoreCard";
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
+
+export default async function Home() {
+  const profile = await fetchLaprasProfile();
+
+  const scoreData: LaprasScore = {
+    e_score: profile.e_score,
+    b_score: profile.b_score,
+    i_score: profile.i_score,
+  };
+
   return (
-    <div className="p-4 md:p-8 m-2 md:m-3 h-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="m-2 p-4 h-full md:m-3 md:p-8">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+        
         {/* 写真スライドショー - 正方形 */}
-        <div className="md:col-span-1 lg:col-span-1">
+        <div className="col-span-1">
           <Card className="aspect-square">
             <CardContent className="p-6 h-full">
               <SwiperGallery images={profileImages} />
@@ -24,28 +38,43 @@ export default function Home() {
         </div>
 
         {/* 右側のコンテナ: 技術スタックとキャッチコピー */}
-        <div className="md:col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:col-span-1 md:grid-cols-1 lg:col-span-2 lg:grid-cols-2">
           {/* 技術スタック */}
-          <Card className="hover:shadow-md transition-all cursor-pointer h-full flex items-center justify-center">
-            <Link href="/nowtraining" >
-              <CardContent className="p-6 ">
-                <TechStack />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-1">
+            <Card className="flex h-full cursor-pointer items-center justify-center transition-all hover:shadow-md">
+              <Link href="/nowtraining">
+                <CardContent className="">
+                  <TechStack />
+                </CardContent>
+              </Link>
+            </Card>
+
+            <Card className="flex h-full cursor-pointer items-center justify-center transition-all hover:shadow-md">
+              <CardContent className="">
+                <div className="flex flex-col">
+                  <p className="text-lg font-bold">Lapras Score</p>
+                  <div className="flex gap-4 md:flex-row flex-col">
+                    <ScoreCard type="engineer" value={scoreData.e_score} />
+                    <ScoreCard type="business" value={scoreData.b_score} />
+                    <ScoreCard type="influence" value={scoreData.i_score} />
+                  </div>
+                </div>
               </CardContent>
-            </Link>
-          </Card>
+            </Card>
+          </div>
 
           {/* 最新のキャリア */}
-          <Card className="block hover:shadow-md transition-all cursor-pointer ">
+          <Card className="block cursor-pointer transition-all hover:shadow-md">
             <Link href="/career">
-              <CardContent className="p-6">
+              <CardContent className="">
                 <LatestCareer />
               </CardContent>
             </Link>
           </Card>
 
           {/* キャッチコピー */}
-          <Card className=" flex items-center justify-center md:col-span-1 lg:col-span-2">
-            <CardContent className="p-6">
+          <Card className="flex items-center justify-center md:col-span-1 lg:col-span-2">
+            <CardContent className="">
               <CatchPhrase />
             </CardContent>
           </Card>
