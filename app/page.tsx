@@ -52,7 +52,7 @@ export default async function Home() {
               <CardContent className="">
                 <div className="flex flex-col">
                   <p className="text-lg font-bold">Lapras Score</p>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 md:flex-row flex-col">
                     <ScoreCard type="engineer" value={scoreData.e_score} />
                     <ScoreCard type="business" value={scoreData.b_score} />
                     <ScoreCard type="influence" value={scoreData.i_score} />
