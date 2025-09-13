@@ -12,8 +12,6 @@ import { fetchLaprasProfile } from "./actions/getLaprasUserJson";
 import { LaprasScore } from "@/types/lapras";
 import { ScoreCard } from "@/components/hero/ScoreCard";
 
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
 
 export default async function Home() {
   const profile = await fetchLaprasProfile();

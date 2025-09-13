@@ -2,7 +2,6 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageDescription } from "@/components/ui/page-description";
 
-export const runtime = "edge";
 
 export default function ContactPage() {
   return (

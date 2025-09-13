@@ -6,7 +6,6 @@ import { PageDescription } from "@/components/ui/page-description";
 import { REPOSITORIES_PER_PAGE } from "@/constants/github";
 import { notFound } from "next/navigation";
 
-export const runtime = "edge";
 export const revalidate = 3600;
 
 type PageProps = {

@@ -1,7 +1,6 @@
 import ContributionBar from "./ContributionBar";
 import { getMonthlyContributions } from "@/app/actions/githubApiFetch";
 
-export const runtime = "edge";
 
 export default async function GitHubContribution() {
   const monthly = await getMonthlyContributions().catch((error) => {
