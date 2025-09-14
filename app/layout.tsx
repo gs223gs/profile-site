@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/navigation/Sidebar";
 import { JotaiProvider } from "@/providers/JotaiProvider";
-import { MainContent } from "@/components/layout/MainContent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,8 +47,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,9 +59,7 @@ export default function RootLayout({
       >
         <JotaiProvider>
           <Sidebar />
-          <MainContent>
-            {children}
-          </MainContent>
+          <main className="ml-16">{children}</main>
         </JotaiProvider>
       </body>
     </html>
