@@ -15,6 +15,32 @@ export interface Skill {
 export const skills: readonly Skill[] = [
   /* ---------------- フロントエンド ---------------- */
   {
+    id: 'ts',
+    name: 'TS',
+    iconUrl: 'https://skillicons.dev/icons?i=typescript',
+    level: 3,                         // ⭐⭐⭐
+    startedAt: '2025/02',
+    overview: 'モダンフロントエンドで使用',
+    highlights: [
+      '主にReact, Next.js のために使用',
+      '次はHonoに挑戦します',
+      '最近型パズルにも挑戦してます'
+    ],
+  },
+  {
+    id: 'js',
+    name: 'JS',
+    iconUrl: 'https://skillicons.dev/icons?i=javascript',
+    level: 3,                         // ⭐⭐⭐
+    startedAt: '2023/04',
+    overview: 'TSの先駆け',
+    highlights: [
+      '基本操作や各種ライブラリを扱えます',
+      '現在はTSを主に活用しています',
+
+    ],
+  },
+  {
     id: 'react',
     name: 'React',
     iconUrl: 'https://skillicons.dev/icons?i=react',
@@ -22,7 +48,6 @@ export const skills: readonly Skill[] = [
     startedAt: '2025/02',
     overview: 'モダンフロント転向のきっかけとなったライブラリ。',
     highlights: [
-      'スキル感はsupabaseを使用したOauth, CRUD,等を問題なく実装できます。',
       'shadcn, Tailwind, TypeScript',
       'React-hook-form, zod, jotai',
       'Vitest, Tanstack Query',
@@ -32,7 +57,7 @@ export const skills: readonly Skill[] = [
     id: 'nextjs',
     name: 'Next.js',
     iconUrl: 'https://skillicons.dev/icons?i=nextjs',
-    level: 1,                         // ⭐
+    level: 3,                         // ⭐
     startedAt: '2025/06',
     overview: 'React ルーティング効率化を目的に学習中。ポートフォリオで採用。',
     highlights: [
@@ -123,7 +148,7 @@ export const skills: readonly Skill[] = [
     id: 'githubactions',
     name: 'GitHub Actions',
     iconUrl: 'https://skillicons.dev/icons?i=githubactions',
-    level: 1,                         // ⭐
+    level: 2,                         // ⭐
     startedAt: '2025/04',
     overview: 'Lint/Test/Build の CI パイプラインを構築中。',
     highlights: [
